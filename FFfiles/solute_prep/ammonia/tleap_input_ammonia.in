@@ -1,0 +1,7 @@
+source leaprc.gaff2
+loadAmberPrep ammonia.prepin
+loadAmberParams ammonia.frcmod
+mol = MOL
+check mol
+saveAmberParm mol ammonia.parm7 ammonia.rst7
+quit

@@ -1,0 +1,47 @@
+#!/bin/csh -f
+### Created by /usr/local/bin/runsbg16
+#
+setenv LD_LIBRARY_PATH /usr/local/pgi/linux86-64/current/libso
+###  setenv LD_ASSUME_KERNEL 2.4.1
+setenv g16root  /sw/chem
+if (-e /scratch_local/sjiao/boricacid ) then
+  /bin/rm -rf /scratch_local/sjiao/boricacid
+endif
+
+echo  '\nThe job is running on machine:  '
+/bin/hostname
+echo -n  'The job started on '
+date +%A
+echo -n ', '
+date +%D
+echo -n ' at '
+date +%R
+
+mkdir -p /scratch_local/sjiao/boricacid
+setenv GAUSS_SCRDIR /scratch_local/sjiao/boricacid
+source /sw/chem/g16/bsd/g16.login
+cd /home/sjiao/boric_acid/spinmult_1
+unlimit datasize
+unlimit filesize
+unlimit stacksize
+unlimit memoryuse
+limit coredumpsize 0
+(time /sw/chem/g16/g16 <boricacid.gjf ) >&boricacid.log
+
+/bin/rm -rf /scratch_local/sjiao/boricacid
+echo '\n'
+time
+
+echo '\nThe job finished on 'date +%A', 'date +%D' at 'date +%R'.'
+
+echo '\nThis is a listing of the disk usages when your job completed'
+echo 'Please monitor your disk usage.'
+echo 'You may do this by typing: du -sk  ~'
+echo 'The size will be in kilobytes.'
+df
+
+echo '\nThis is a directory listing of the scratch directory.'
+echo 'Please check that all of your scratch files have been removed.'
+
+ls -l /scratch_local/sjiao*
+echo '\n'

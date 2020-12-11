@@ -1,0 +1,7 @@
+source leaprc.gaff2
+loadAmberPrep benzene.prepin
+loadAmberParams benzene.frcmod
+mol = MOL
+check mol
+saveAmberParm mol benzene.parm7 benzene.rst7
+quit

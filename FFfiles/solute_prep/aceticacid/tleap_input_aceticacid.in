@@ -1,0 +1,7 @@
+source leaprc.gaff2
+loadAmberPrep aceticacid.prepin
+loadAmberParams aceticacid.frcmod
+mol = MOL
+check mol
+saveAmberParm mol aceticacid.parm7 aceticacid.rst7
+quit

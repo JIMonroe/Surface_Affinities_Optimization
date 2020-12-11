@@ -1,0 +1,20 @@
+[ atomtypes ]
+; name    mass    charge ptype  sigma      epsilon
+oh        16.00000    0.000000  A      0.324287      0.389112
+ho         1.00800    0.000000  A     0.0537925     0.0196648
+B         10.81100    0.000000  A     0.1790706     0.397480 ; from Mayo et al. 1990 (DREIDING) and BF4- tutorial
+
+[ bondtypes ]
+; i    j  func       b0          kb
+oh    B        1   0.12510   159828.800000 ; from Otkidach and Pletnev, 2001
+oh    ho       1   0.09730   471545.168000
+
+[ angletypes ]
+;  i    j    k  func       th0       cth    rub         kub
+oh    B     oh       1      0.000      0.000 ; only bond repulsion, no angle from Otkidach and Pletnev, 2001
+ho    oh    B        1      108.0    292.880 ; from Otkidach and Pletnev, 2001
+
+[ dihedraltypes ]
+;i  j   k  l  func      phase      kd      pn
+oh     B      oh     ho      9   0.00   0.104600   2
+

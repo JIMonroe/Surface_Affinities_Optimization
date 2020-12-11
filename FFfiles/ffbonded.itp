@@ -1,0 +1,244 @@
+[ bondtypes ]
+; i    j  func       b0          kb
+  OW HW         1    0.09572   462750.4 
+  HW HW         1    0.15136   462750.4 
+  CT HC         1    0.10900   284512.0 ; opls CT-HC
+  HO OH         1    0.09450   462750.4 ; opls OH HO
+  CU CT         1    0.15290   224262.4 ; CT-CT opls 
+ CUO OH         1    0.14100   267776.0 ; opls CT OH
+  CU CU         1    0.15400   392460.0 
+  CU SU         1    0.15400   392460.0 
+  CU CUO        1    0.15400   392460.0
+  MC MO         1    0.14300   267776.0 ; opls CT OH, but for TRAPPE should be rigid
+  MO HM         1    0.09450   462850.4 ; again, opls OH HO, but will constrain so kb irrelevant
+; GAFF2 bonds for sulfonate and quaternary ammonium head-groups
+  CU sy         1    0.18090   166849.6 ; GAFF2 c3-sy
+  sy  o         1    0.14660   546564.3 ; GAFF2 o-sy
+  CU n4         1    0.15110   186254.9 ; GAFF2 c3-n4
+  n4 c3         1    0.15110   186254.9 ; GAFF2 c3-n4
+; bonds for GAFF2 solutes
+c3    hc       1   0.10970   314569.856000
+c3    oh       1   0.14230   245517.120000
+c3    h1       1   0.10970   314569.856000
+oh    ho       1   0.09730   471545.168000
+c3    c3       1   0.15380   194572.736000
+ca    ca       1   0.13980   316787.376000
+ca    ha       1   0.10860   331138.496000
+ca    oh       1   0.13640   305892.240000
+n9    hn       1   0.10190   328360.320000
+oh    c        1   0.13510   320603.184000
+c     c3       1   0.15240   203526.496000
+c     o        1   0.12180   546070.576000
+; bonds for boric acid (using oh-oh for oxygen and hydrogen)
+oh    B        1   0.12510   159828.800000 ; from Otkidach and Pletnev, 2001
+; bonds for peptides from ff14SB
+C     O        1   0.12290   476976.000000
+C     N        1   0.13350   410032.000000
+CE    C        1   0.15220   265265.600000
+CX    C        1   0.15220   265265.600000
+N     CX       1   0.14490   282001.600000
+N     CE       1   0.14490   282001.600000
+CE    HE       1   0.10900   284512.000000
+CX    H1       1   0.10900   284512.000000
+N     H        1   0.10100   363171.200000
+CE    H1       1   0.10900   284512.000000
+N3    CX       1   0.14710   307105.600000
+C     O2       1   0.12500   548940.800000
+CX    HP       1   0.10900   284512.000000
+N3    H        1   0.10100   363171.200000
+
+[ constrainttypes ]
+; this section is implemented manually from bond & angle values
+
+[ angletypes ]
+;  i    j    k  func       th0       cth
+HW  OW  HW           1   104.520    836.800   ; TIP3P water
+HW  HW  OW           1   127.740      0.000   ; (found in crystallographic water with 3 bonds)
+HC  CT  HC           1   107.800    276.144   ; opls HC CT HC 
+CU  CU  CU           1   114.000    519.56912 ; Mondello Model C
+CU  SU  CU           1   114.000    519.56912 ; Mondello Model C, S treated as C
+CU  CU  SU           1   114.000    519.56912 ;
+CU  CU  CUO          1   114.000    519.56912 ;
+CU  CU  CT           1   114.000    519.56912 ;
+CU  CT  HC           1   110.700    313.800   ; opls CT CT HC
+CU  CUO OH           1   109.500    418.400   ; ??? angle for which? I grabbed mine from opls/TRAPPE 
+CUO OH  HO           1   108.500    460.240   ; opls CT OH HO
+; In itp files from Zach Levine, would have CU CUO OH angle with 108.5  460.240 and CUO OH HO unrestrained
+; This would lead to a hydrogen with no angle or dihedral restraint...
+; Will enhance H-bonding ability, but for surface-surface or with water more? Not sure.
+MC  MO  HM           1   108.500    460.621   ; TRAPPE methanol angle
+; Below are GAFF2 angles for sulfonate and quaternary ammonium headgroups
+CU  CU  sy           1   109.920    536.230   ; GAFF2 c3-c3-sy
+CU  sy   o           1   107.850    784.851   ; GAFF2 c3-sy-o
+ o  sy   o           1   121.410   1057.506   ; GAFF2 o -sy-o
+CU  CU  n4           1   114.210    677.607   ; GAFF2 c3-c3-n4
+CU  n4  c3           1   109.660    539.401   ; GAFF2 c3-n4-c3
+n4  c3  hc           1   107.900    502.674   ; GAFF2 hc-c3-n4
+c3  n4  c3           1   109.660    539.401   ; GAFF2 c3-n4-c3
+hc  c3  hc           1   107.580    326.017   ; GAFF2 hc-c3-hc
+; angles for GAFF2 solutes
+c3  oh  ho           1   107.260    410.258
+h1  c3  h1           1   108.460    324.695
+h1  c3  oh           1   110.260    523.335
+c3  c3  c3           1   111.510    542.983
+c3  c3  oh           1   110.190    708.284
+c3  c3  h1           1   109.560    392.191
+hc  c3  c3           1   109.800    391.756
+ca  ca  ca           1   120.020    575.442
+ca  ca  ha           1   119.880    407.354
+ca  ca  oh           1   119.900    729.782
+ca  oh  ho           1   108.580    424.358
+hn  n9  hn           1   106.400    346.435
+oh   c  c3           1   112.730    718.000
+oh   c   o           1   122.100    968.554
+c3   c   o           1   123.200    707.531
+ho  oh   c           1   106.550    431.931
+c   c3  hc           1   108.770    396.735
+; angles for boric acid
+oh    B     oh       1      0.000      0.000 ; only bond repulsion, no angle from Otkidach and Pletnev, 2001
+ho    oh    B        1      108.0    292.880 ; from Otkidach and Pletnev, 2001
+; angles for peptides from ff14SB 
+O     C     N        1    122.9000527    669.4400000
+C     N     CX       1    121.9000522    418.4000000
+CE    C     O        1    120.4000516    669.4400000
+CE    C     N        1    116.6000500    585.7600000
+C     N     CE       1    121.9000522    418.4000000
+CX    C     O        1    120.4000516    669.4400000
+CX    C     N        1    116.6000500    585.7600000
+N     CX    C        1    110.1000472    527.1840000
+C     N     H        1    120.0000514    418.4000000
+HE    CE    C        1    109.5000469    418.4000000
+HE    CE    HE       1    109.5000469    292.8800000
+H1    CX    C        1    109.5000469    418.4000000
+H1    CX    H1       1    109.5000469    292.8800000
+H     N     CX       1    118.0400505    418.4000000
+N     CX    H1       1    109.5000469    418.4000000
+H1    CE    H1       1    109.5000469    292.8800000
+H     N     CE       1    118.0400505    418.4000000
+N     CE    H1       1    109.5000469    418.4000000
+N3    CX    C        1    111.2000477    669.4400000
+O2    C     O2       1    126.0000540    669.4400000
+CX    C     O2       1    117.0000501    585.7600000
+HP    CX    C        1    109.5000469    418.4000000
+HP    CX    HP       1    109.5000469    292.8800000
+H     N3    CX       1    109.5000469    418.4000000
+H     N3    H        1    109.5000469    292.8800000
+N3    CX    HP       1    109.5000469    418.4000000
+
+[ dihedraltypes ]
+; standard AMBER dihedrals that we need
+;i   j   k   l	   func  phase     kd          pn	
+; CU  CU  CT  HC     9      0.0      0.65084     3  
+; CU  CU  OH  HO     9      0.0      0.69733     3 
+; standard dihedral types for GAFF2 sulfonate and quaternary ammonium headgroups
+; note that note applying dihedrals between SAM chain and head-group atoms
+; this as the case for the OH and CH3 head-groups, so doing the same for charged headgroups
+; BUT, still applying dihedrals WITHIN the quaternary ammonium headgroup
+hc     c3     n4     c3      9   0.00   5.857600   3   ; GAFF2 X -c3-n4-X general dihedral
+; standard dihedrals for GAFF2 solutes
+h1     c3     oh     ho      9   0.00   0.472792   3
+c3     c3     c3     hc      9   0.00   0.334720   3
+c3     c3     oh     ho      9   0.00   0.000000   3
+hc     c3     c3     h1      9   0.00   0.650844   3
+hc     c3     c3     oh      9   0.00   2.133840   1
+hc     c3     c3     oh      9   0.00   0.753120   3
+ca     ca     ca     ca      9   180.00   15.167000   2
+ca     ca     ca     ha      9   180.00   15.167000   2
+ha     ca     ca     ha      9   180.00   15.167000   2
+ca     ca     ca     oh      9   180.00   15.167000   2
+ca     ca     oh     ho      9   180.00   3.493640   2
+ha     ca     ca     oh      9   180.00   15.167000   2
+oh     c      c3     hc      9   180.00   0.000000   2
+ho     oh     c      c3      9   180.00   7.447520   2
+ho     oh     c      o       9   0.00   7.949600   1
+ho     oh     c      o       9   180.00   9.623200   2
+hc     c3     c      o       9   0.00   3.472720   1
+hc     c3     c      o       9   180.00   0.167360   3
+; dihedral for boric acid
+oh     B      oh     ho      9   0.00   0.104600   2
+; dihedrals for peptides from ff14SB
+O      C      N      CX      9   180.00   10.460000   2
+C      N      CX     C       9   0.00   0.000000   1
+C      N      CX     C       9   0.00   1.129680   2
+C      N      CX     C       9   0.00   1.757280   3
+C      N      CX     C       9   0.00   0.000000   4
+CE     C      N      CX      9   180.00   10.460000   2
+O      C      N      CE      9   180.00   10.460000   2
+CX     C      N      CE      9   180.00   10.460000   2
+N      CX     C      O       9   0.00   0.000000   2
+N      CX     C      N       9   180.00   1.882800   1
+N      CX     C      N       9   180.00   6.610720   2
+N      CX     C      N       9   180.00   2.301200   3
+N      CX     C      N       9   0.00   0.000000   4
+O      C      N      H       9   0.00   8.368000   1
+O      C      N      H       9   180.00   10.460000   2
+C      N      CX     H1      9   0.00   0.000000   2
+HE     CE     C      O       9   0.00   3.347200   1
+HE     CE     C      O       9   0.00   0.000000   2
+HE     CE     C      O       9   180.00   0.334720   3
+HE     CE     C      N       9   0.00   0.000000   2
+CE     C      N      H       9   180.00   10.460000   2
+C      N      CE     H1      9   0.00   0.000000   2
+H1     CX     C      O       9   0.00   3.347200   1
+H1     CX     C      O       9   0.00   0.000000   2
+H1     CX     C      O       9   180.00   0.334720   3
+H1     CX     C      N       9   0.00   0.000000   2
+CX     C      N      H       9   180.00   10.460000   2
+H      N      CX     H1      9   0.00   0.000000   2
+H      N      CX     C       9   0.00   0.000000   2
+H      N      CE     H1      9   0.00   0.000000   2
+CX     C      N      CX      9   180.00   10.460000   2
+N3     CX     C      O       9   0.00   0.000000   2
+N3     CX     C      N       9   0.00   0.000000   2
+N      CX     C      O2      9   0.00   0.000000   2
+HP     CX     C      O       9   0.00   0.000000   2
+HP     CX     C      N       9   0.00   0.000000   2
+H      N3     CX     HP      9   0.00   0.650844   3
+H      N3     CX     C       9   0.00   0.650844   3
+H1     CX     C      O2      9   0.00   0.000000   2
+
+[ dihedraltypes ]
+; apply all-atom dihedral types using Ryckaert-Bellemans dihedral function
+;i   j   k   l     func    C0      C1      C2      C3      C4      C5
+ CU  CU  CU  CU     3   7.263424 18.828 3.196576 -29.288 0.00000 0.00000 ; Mondello Model C
+ CU  SU  CU  CU     3   7.263424 18.828 3.196576 -29.288 0.00000 0.00000
+ SU  CU  CU  CU     3   7.263424 18.828 3.196576 -29.288 0.00000 0.00000
+; CU  CU  CU  CT     3   7.263424 18.828 3.196576 -29.288 0.00000 0.00000
+ CU  CU  CU  CUO    3   7.263424 18.828 3.196576 -29.288 0.00000 0.00000
+
+[ dihedraltypes ]
+; nonstandard dihedrals for GAFF2 solutes (just aromatics, I think)
+;i  j   k  l  func      phase      kd      pn
+oh     c      o      c3      4   180.00   0.262906   2
+ha     ca     ca     ca      4   180.00   0.262906   2
+ca     ca     ca     oh      4   180.00   0.262906   2
+; no improper for boric acid, even though planar, because will use bond repulsion term of Otkidach and Pletnev
+; nonstandard dihedrals for peptides using ff14SB
+CE     O      C      N       4   180.00   2.509560   2
+CE     N      C      O       4   180.00   2.509560   2
+O      CE     C      N       4   180.00   2.509560   2
+O      N      C      CE      4   180.00   2.509560   2
+N      CE     C      O       4   180.00   2.509560   2
+N      O      C      CE      4   180.00   2.509560   2
+O      CX     C      N       4   180.00   2.509560   2
+O      N      C      CX      4   180.00   2.509560   2
+CX     O      C      N       4   180.00   2.509560   2
+CX     N      C      O       4   180.00   2.509560   2
+N      O      C      CX      4   180.00   2.509560   2
+N      CX     C      O       4   180.00   2.509560   2
+H      C      N      CX      4   180.00   0.262906   2
+H      CX     N      C       4   180.00   0.262906   2
+C      H      N      CX      4   180.00   0.262906   2
+C      CX     N      H       4   180.00   0.262906   2
+CX     H      N      C       4   180.00   0.262906   2
+CX     C      N      H       4   180.00   0.262906   2
+H      C      N      CE      4   180.00   0.262906   2
+H      CE     N      C       4   180.00   0.262906   2
+C      H      N      CE      4   180.00   0.262906   2
+C      CE     N      H       4   180.00   0.262906   2
+CE     H      N      C       4   180.00   0.262906   2
+CE     C      N      H       4   180.00   0.262906   2
+O2     CX     C      O2      4   180.00   2.509560   2
+O2     O2     C      CX      4   180.00   2.509560   2
+CX     O2     C      O2      4   180.00   2.509560   2
+

@@ -1,0 +1,88 @@
+;
+;
+;   File created manually with the createSAMSurf() function of genetic_lib.py
+;
+;
+
+[ defaults ]
+; nbfunc        comb-rule       gen-pairs       fudgeLJ fudgeQQ
+1               2               yes             0.5     0.833333
+
+; Use force field parameters 
+#include "/home/jmonroe/Surface_Affinities_Project/FFfiles/ffnonbonded.itp"
+#include "/home/jmonroe/Surface_Affinities_Project/FFfiles/ffbonded.itp"
+
+; Include methyl-terminated chain (CTM)
+#include "/home/jmonroe/Surface_Affinities_Project/FFfiles/ctmSAM.itp"
+
+; Include hydroxyl-terminated chain (OTM)
+#include "/home/jmonroe/Surface_Affinities_Project/FFfiles/otmSAM.itp"
+
+; Include all solutes of interest
+#include "/home/jmonroe/Surface_Affinities_Project/FFfiles/solutes.itp"
+
+; Use TIP4P-Ew water model 
+#include "/home/jmonroe/Surface_Affinities_Project/FFfiles/tip4pew.itp" 
+
+[ system ]
+; Name
+Generic title
+
+[ molecules ]
+; Compound       #mols
+CTM                 1
+CTM                 1
+CTM                 1
+CTM                 1
+CTM                 1
+CTM                 1
+CTM                 1
+CTM                 1
+OTM                 1
+OTM                 1
+OTM                 1
+OTM                 1
+OTM                 1
+OTM                 1
+OTM                 1
+OTM                 1
+CTM                 1
+CTM                 1
+CTM                 1
+CTM                 1
+CTM                 1
+CTM                 1
+CTM                 1
+CTM                 1
+OTM                 1
+OTM                 1
+OTM                 1
+OTM                 1
+OTM                 1
+OTM                 1
+OTM                 1
+OTM                 1
+CTM                 1
+CTM                 1
+CTM                 1
+CTM                 1
+CTM                 1
+CTM                 1
+CTM                 1
+CTM                 1
+OTM                 1
+OTM                 1
+OTM                 1
+OTM                 1
+OTM                 1
+OTM                 1
+OTM                 1
+OTM                 1
+CTM                 1
+OTM                 1
+CTM                 1
+OTM                 1
+CTM                 1
+OTM                 1
+CTM                 1
+OTM                 1

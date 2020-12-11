@@ -1,0 +1,7 @@
+source leaprc.gaff2
+loadAmberPrep isopropanol.prepin
+loadAmberParams isopropanol.frcmod
+mol = MOL
+check mol
+saveAmberParm mol isopropanol.parm7 isopropanol.rst7
+quit

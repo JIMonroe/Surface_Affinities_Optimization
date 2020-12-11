@@ -1,0 +1,95 @@
+[ atomtypes ]
+; name      at.num  mass     charge ptype  sigma      epsilon
+; standard atom types for carbons, oxygens, and hydrogens in alkanes, alcohols, and water
+CT           6      12.011  -0.1800  A   3.50000e-01  2.76144e-01 ;opls_135 methyl (CH3)
+HC           1       1.008   0.0600  A   2.50000e-01  1.25520e-02 ;opls_140
+HO           1       1.008   0.4350  A   0.00000e+00  0.00000e+00 ;opls_23
+HW           1       1.008   0.0000  A   0.00000e+00  0.00000e+00 ;SPC water
+OW           8      16.00    0.0000  A   3.15061e-01  6.36386e-01 ;SPC water
+OH           8      15.9994 -0.7000  A   3.07000e-01  7.11280e-01 ;opls_024
+; united-atom representation for SAM chains, CU is CH2 group, SU is sulfur
+; CUO is the last carbon in the chain before an OH, and has different LJ parameters
+CU           6      14.027   0.0000  A   4.01000e-01  3.89112e-01 ;Mondello Model C
+SU          16      32.06    0.0000  A   3.60000e-01  1.77820e-01 ;opls_200 thiols
+CUO          6      14.027   0.2650  A   3.90500e-01  4.93712e-01 ;opls_022
+; GAFF2 atom types for sulfonate and methyl quaternary ammonium head-groups
+sy          16      32.06    0.0000  A   3.53241e-01  1.18156e+00
+o            8      16.00    0.0000  A   3.04812e-01  6.12119e-01
+n4           7      14.01    0.0000  A   2.49951e-01  1.62122e+01
+c3             6   12.01000    0.000000  A      0.339771      0.451035
+hc             1    1.00800    0.000000  A      0.260018     0.0870272
+; spc water - use only with spc.itp & settles
+OW_spc       8      15.9994  0.0000  A   3.16557e-01  6.50629e-01
+HW_spc       1       1.0080  0.0000  A   0.00000e+00  0.00000e+00
+;tip4p-EW
+HW_tip4pew   1       1.008   0.0000  A   0.00000e+00  0.00000e+00
+OW_tip4pew   8      16.00    0.0000  A   3.16435e-01  6.80946e-01
+;tip4p/2005
+HW_tip4p2005 1       1.008   0.0000  A   0.00000e+00  0.00000e+00
+OW_tip4p2005 8      16.00    0.0000  A   3.15890e-01  7.74900e-01
+; tip4p
+HW_tip4p     1       1.008   0.0000  A   0.00000e+00  0.00000e+00
+OW_tip4p     8      16.00    0.0000  A   3.15365e-01  6.48520e-01
+;tip5p
+HW_tip5p     1       1.008   0.0000  A   0.00000e+00  0.00000e+00
+OW_tip5p     8      16.00    0.0000  A   3.12000e-01  6.69440e-01
+; dummy defs
+; MW=Dummy mass for tip4p/EW/5p water extra point charge
+MW           0       0.0000  0.0000  D   0.00000e+00  0.00000e+00
+; United-atom methane as a test solute
+Mr             9   16.043      0.0000  A       3.7300e-01       1.23010e+00
+; TRAPPE methanol (united atom, essentially same force field as for methane)
+MC             6   15.035      0.2650  A       3.7500e-01       8.14817e-01
+MO             8   15.9994    -0.7000  A       3.0200e-01       7.73245e-01
+HM             1    1.008      0.4350  A       0.0000e+00       0.00000e+00
+; GAFF2 atomtypes for following solutes
+; methane, methanol, isopropanol, benzene, phenol, ammonia
+; c3 and hc covered by quaternary ammonium head-group
+h1             1    1.00800    0.000000  A        0.2422     0.0870272
+oh             8   16.00000    0.000000  A      0.324287      0.389112
+ho             1    1.00800    0.000000  A     0.0537925     0.0196648
+ca             6   12.01000    0.000000  A      0.331521      0.413379
+ha             1    1.00800    0.000000  A      0.262548     0.0673624
+n9             7   14.01000    0.000000  A         0.325       0.71128
+hn             1    1.00800    0.000000  A       0.11065       0.04184
+c              6   12.01000    0.000000  A      0.331521      0.413379
+; Atom types unique to boric acid - only have boron (B) because use GAFF2 LJ params for oxygens and hydrogens
+B              5   10.81100    0.000000  A     0.358141     0.397480 ; from Mayo et al. 1990 (DREIDING) and BF4- tutorial
+; AMBER ff14SB parameters - would be nice to use ff14ipq, but can't make special combining rules work with my code
+; Only had to rename HC and CT, otherwise using AMBER atom names
+HE             1   1.008000  0.00000000  A     0.26495328      0.0656888
+CE             6  12.010000  0.00000000  A     0.33996695      0.4577296
+C              6  12.010000  0.00000000  A     0.33996695       0.359824
+O              8  16.000000  0.00000000  A     0.29599219        0.87864
+N              7  14.010000  0.00000000  A     0.32499985        0.71128
+H              1   1.008000  0.00000000  A     0.10690785      0.0656888
+CX             6  12.010000  0.00000000  A     0.33996695      0.4577296
+H1             1   1.008000  0.00000000  A      0.2471353      0.0656888
+N3             7  14.010000  0.00000000  A     0.32499985        0.71128
+HP             1   1.008000  0.00000000  A     0.19599772      0.0656888
+O2             8  16.000000  0.00000000  A     0.29599219        0.87864
+
+;[ pairtypes ]
+;; i   j   func     c0           c1 ; define 1-4 interactions as zero by default for SAM
+;CT   CT   1       0.000       0.000
+;CT   CU   1       0.000       0.000
+;CT   SU   1       0.000       0.000
+;CT   HC   1       0.000       0.000
+;CT   OH   1       0.000       0.000
+;CT   HO   1       0.000       0.000
+;CU   CU   1       0.000       0.000
+;CU   SU   1       0.000       0.000
+;CU   HC   1       0.000       0.000
+;CU   OH   1       0.000       0.000
+;CU   HO   1       0.000       0.000
+;SU   SU   1       0.000       0.000
+;SU   HC   1       0.000       0.000
+;SU   OH   1       0.000       0.000
+;SU   HO   1       0.000       0.000
+;HC   HC   1       0.000       0.000
+;HC   OH   1       0.000       0.000
+;HC   HO   1       0.000       0.000
+;OH   OH   1       0.000       0.000
+;OH   HO   1       0.000       0.000
+;HO   HO   1       0.000       0.000
+

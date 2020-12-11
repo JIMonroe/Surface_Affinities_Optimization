@@ -1,0 +1,81 @@
+;
+;   File boricacid.top  was generated
+;   By user: jmonroe (502)
+;   On host: zin.cnsi.ucsb.edu
+;   At date: Tue. March  2 18:07:30 2019
+;
+;   This is a standalone topology file
+;
+;   Created by:
+;   ParmEd:       -c, VERSION 2.7.4
+;   Executable:   -c
+;   Library dir:  /usr/local/gromacs/share/gromacs/top
+;   Command line:
+;     -c
+;
+
+[ defaults ]
+; nbfunc        comb-rule       gen-pairs       fudgeLJ fudgeQQ
+1               2               yes             0.5     0.833333
+
+#include "boricacid.itp"
+
+
+[ moleculetype ]
+; Name            nrexcl
+MOL          3
+
+[ atoms ]
+;   nr       type  resnr residue  atom   cgnr    charge       mass  typeB    chargeB      massB
+; residue    1 MOL rtp MOL q -0.0
+    1         oh      1    MOL     O1      1  -0.640042    16.0000   ; qtot -0.6400
+    2         ho      1    MOL     H1      2   0.375825     1.0080   ; qtot -0.2642
+    3          B      1    MOL     B1      3   0.792650     0.0000   ; qtot 0.5284
+    4         oh      1    MOL     O3      4  -0.640042    16.0000   ; qtot -0.1116
+    5         ho      1    MOL     H3      5   0.375825     1.0080   ; qtot 0.2642
+    6         oh      1    MOL     O2      6  -0.640042    16.0000   ; qtot -0.3758
+    7         ho      1    MOL     H2      7   0.375825     1.0080   ; qtot -0.0000
+
+[ bonds ]
+;    ai     aj funct         c0         c1         c2         c3
+      1      3     1
+      3      4     1
+      3      6     1
+      1      2     1
+      4      5     1
+      6      7     1
+
+[ pairs ]
+;    ai     aj funct         c0         c1         c2         c3
+      1      5     1
+      1      7     1
+      2      4     1
+      2      6     1
+      4      7     1
+      5      6     1
+
+[ angles ]
+;    ai     aj     ak funct         c0         c1         c2         c3
+      1      3      4     1
+      1      3      6     1
+      4      3      6     1
+      2      1      3     1
+      3      4      5     1
+      3      6      7     1
+
+[ dihedrals ]
+;    ai     aj     ak     al funct         c0         c1         c2         c3         c4         c5
+      1      3      4      5     1
+      1      3      6      7     1
+      2      1      3      4     1
+      2      1      3      6     1
+      4      3      6      7     1
+      5      4      3      6     1
+
+[ system ]
+; Name
+Generic title
+
+[ molecules ]
+; Compound       #mols
+MOL                  1

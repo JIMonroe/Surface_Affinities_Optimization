@@ -1,0 +1,75 @@
+; Defines octanol parameters from TRAPPE
+
+[ atomtypes ]
+; name      at.num  mass     charge ptype  sigma      epsilon
+CH3          6      15.035   0.0000  A   3.75000e-01  8.14817e-01
+CH2          6      14.027   0.0000  A   3.95000e-01  3.82465e-01
+OT           8      15.999  -0.7000  A   3.02000e-01  7.73245e-01
+HT           1       1.008   0.4350  A   0.00000e+00  0.00000e+00
+
+[ moleculetype ]
+; Name            nrexcl
+octanol           3
+
+[ atoms ]
+;   nr       type  resnr residue  atom   cgnr    charge       mass  typeB    chargeB      massB
+; residue    1 SOL rtp SOL q 0.0
+    1        CH3      1    SOL     C1      1   0.00000000  15.0350   
+    2        CH2      1    SOL     C2      2   0.00000000  14.0270   
+    3        CH2      1    SOL     C3      3   0.00000000  14.0270    
+    4        CH2      1    SOL     C4      4   0.00000000  14.0270    
+    5        CH2      1    SOL     C5      5   0.00000000  14.0270    
+    6        CH2      1    SOL     C6      6   0.00000000  14.0270    
+    7        CH2      1    SOL     C7      6   0.00000000  14.0270     
+    8        CH2      1    SOL     C8      6   0.26500000  14.0270    
+    9         OT      1    SOL      O      6  -0.70000000  15.9999    
+   10         HT      1    SOL      H      6   0.43500000   1.0080    
+
+[ bonds ]
+;   i    j  func       b0          kb
+      1      2     1      0.1540     224262.4  ; this is from OPLS for CT-CT atom types 
+      2      3     1      0.1540     224262.4   
+      3      4     1      0.1540     224262.4  ; Will only use distances here to set constraints 
+      4      5     1      0.1540     224262.4  ; In TRAPPE, bonds are rigid
+      5      6     1      0.1540     224262.4 
+      6      7     1      0.1540     224262.4 
+      7      8     1      0.1540     224262.4 
+      8      9     1      0.1430     267776.0  ; OPLS CT-OH
+      9     10     1      0.0945     462750.4  ; OPLS OH-HO
+
+[ pairs ]
+;    ai     aj funct         c0         c1         c2         c3
+
+[ angles ]
+;  i    j    k  func       th0       cth
+      1      2      3     1       114.0      519.65374
+      2      3      4     1       114.0      519.65374
+      3      4      5     1       114.0      519.65374
+      4      5      6     1       114.0      519.65374
+      5      6      7     1       114.0      519.65374
+      6      7      8     1       114.0      519.65374
+      7      8      9     1       109.5      419.04878
+      8      9     10     1       108.5      460.62108
+
+[ dihedrals ]
+;  i   j   k   l	   func    c0      c1      c2      c3      c4      c5
+      1      2      3      4     3   8.39736   16.78631   1.13393   -26.31759   0.00000   0.00000
+      2      3      4      5     3   8.39736   16.78631   1.13393   -26.31759   0.00000   0.00000
+      3      4      5      6     3   8.39736   16.78631   1.13393   -26.31759   0.00000   0.00000
+      4      5      6      7     3   8.39736   16.78631   1.13393   -26.31759   0.00000   0.00000
+      5      6      7      8     3   8.39736   16.78631   1.13393   -26.31759   0.00000   0.00000
+      6      7      8      9     3   6.98307   17.73616   0.88699   -25.60621   0.00000   0.00000
+      7      8      9     10     3   2.82201    2.94307   0.48507    -6.25015   0.00000   0.00000
+; Below are parameters if use Fourier dihedrals in gromacs 
+; (note multiplied by 2 compared to TRAPPE)
+; Above we've converted from Fourier to Ryckaert-Bellemans dihedrals (see GROMACS manual)
+; this maintains compatibility with parmed and openmm
+;      1      2      3      4     5  5.90377  -1.13393  13.15880  0.00000
+;      2      3      4      5     5  5.90377  -1.13393  13.15880  0.00000
+;      3      4      5      6     5  5.90377  -1.13393  13.15880  0.00000
+;      4      5      6      7     5  5.90377  -1.13393  13.15880  0.00000
+;      5      6      7      8     5  5.90377  -1.13393  13.15880  0.00000
+;      6      7      8      9     5  2.93700  -0.88699  12.80310  0.00000
+;      7      8      9     10     5  3.48908  -0.48507   3.12507  0.00000
+
+

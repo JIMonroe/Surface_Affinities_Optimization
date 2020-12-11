@@ -1,0 +1,23 @@
+[ atomtypes ]
+; name    at.num    mass    charge ptype  sigma      epsilon
+c3             6   12.01000    0.000000  A      0.339771      0.451035
+h1             1    1.00800    0.000000  A        0.2422     0.0870272
+oh             8   16.00000    0.000000  A      0.324287      0.389112
+ho             1    1.00800    0.000000  A     0.0537925     0.0196648
+
+[ bondtypes ]
+; i    j  func       b0          kb
+c3    oh       1   0.14230   245517.120000
+c3    h1       1   0.10970   314569.856000
+oh    ho       1   0.09730   471545.168000
+
+[ angletypes ]
+;  i    j    k  func       th0       cth    rub         kub
+c3    oh    ho       1    107.260    410.258
+h1    c3    h1       1    108.460    324.695
+h1    c3    oh       1    110.260    523.335
+
+[ dihedraltypes ]
+;i  j   k  l  func      phase      kd      pn
+h1     c3     oh     ho      9   0.00   0.472792   3
+

@@ -1,0 +1,4 @@
+source oldff/leaprc.ff14SB
+seq = sequence { NGLY CGLY }
+saveAmberParm seq zwitterGLY.parm7 zwitterGLY.rst7
+quit

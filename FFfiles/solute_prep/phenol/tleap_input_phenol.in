@@ -1,0 +1,7 @@
+source leaprc.gaff2
+loadAmberPrep phenol.prepin
+loadAmberParams phenol.frcmod
+mol = MOL
+check mol
+saveAmberParm mol phenol.parm7 phenol.rst7
+quit

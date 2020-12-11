@@ -1,0 +1,4 @@
+source oldff/leaprc.ff14SB
+seq = sequence { ACE GLY NME }
+saveAmberParm seq capGLY.parm7 capGLY.rst7
+quit

@@ -1,0 +1,24 @@
+\nThe job is running on machine:  
+node27
+The job started on Tuesday
+, 03/12/19
+ at 17:00
+\n
+948.354u 19.156s 4:27.31 361.9%	0+0k 590005+538152io 10pf+0w
+\nThe job finished on date +%A, date +%D at date +%R.
+\nThis is a listing of the disk usages when your job completed
+Please monitor your disk usage.
+You may do this by typing: du -sk  ~
+The size will be in kilobytes.
+Filesystem           1K-blocks      Used Available Use% Mounted on
+/dev/sda2            144227000  37435340  99465352  28% /
+tmpfs                 24773928         0  24773928   0% /dev/shm
+/dev/sda1               496805     37169    433985   8% /boot
+knot-head:/sw        961382400 747325440 165222400  82% /sw
+knot-hss:/hss1       12294070272 10264524800 2029545472  84% /hss1
+beegfs_nodev         234390331392 136698480640 97691850752  59% /home-b
+\nThis is a directory listing of the scratch directory.
+Please check that all of your scratch files have been removed.
+total 4
+drwxr-xr-x 2 sjiao ucsb 4096 Feb  8 08:42 alc_wcap
+\n

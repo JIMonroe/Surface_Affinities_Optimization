@@ -1,0 +1,7 @@
+source leaprc.gaff2
+loadAmberPrep boricacid.prepin
+loadAmberParams boricacid.frcmod
+mol = MOL
+check mol
+saveAmberParm mol boricacid.parm7 boricacid.rst7
+quit

@@ -1,0 +1,7 @@
+source leaprc.gaff2
+loadAmberPrep prefix.prepin
+loadAmberParams prefix.frcmod
+mol = MOL
+check mol
+saveAmberParm mol prefix.parm7 prefix.rst7
+quit

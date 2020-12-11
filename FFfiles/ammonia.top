@@ -1,0 +1,28 @@
+;
+;  File created manually by Jacob Monroe
+;  03/07/2019
+;
+
+[ defaults ]
+; nbfunc        comb-rule       gen-pairs       fudgeLJ fudgeQQ
+1               2               yes             0.5     0.833333
+
+; Use force field parameters 
+#include "/home/jmonroe/Surface_Affinities_Project/FFfiles/ffnonbonded.itp"
+#include "/home/jmonroe/Surface_Affinities_Project/FFfiles/ffbonded.itp"
+
+
+
+; Include all solutes of interest
+#include "/home/jmonroe/Surface_Affinities_Project/FFfiles/solutes.itp"
+
+; Use TIP4P-Ew water model 
+#include "/home/jmonroe/Surface_Affinities_Project/FFfiles/tip4pew.itp" 
+
+[ system ]
+; Name
+Generic title
+
+[ molecules ]
+; Compound       #mols
+ammonia             1
